@@ -1,0 +1,1194 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Wed Dec 19 11:07:01 2018
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 2 "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 BI
+                                 T.h"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 2 "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 BI
+                                 T.h"
+    45  2007  3F3A               	dw 0X3F3A ;#
+    46                           	FNCALL	_main,_Lcd_Intialization
+    47                           	FNCALL	_main,_Lcd_Command
+    48                           	FNCALL	_main,_Lcd_String
+    49                           	FNCALL	_main,_SPI_String
+    50                           	FNCALL	_Lcd_Intialization,_Lcd_Command
+    51                           	FNCALL	_Lcd_String,_Lcd_Data
+    52                           	FNCALL	_SPI_String,_SPI_Send_Data
+    53                           	FNROOT	_main
+    54                           	global	_PORTC
+    55                           psect	text118,local,class=CODE,delta=2
+    56                           global __ptext118
+    57  0000                     __ptext118:
+    58  0007                     _PORTC	set	7
+    59                           	global	_PORTD
+    60  0008                     _PORTD	set	8
+    61                           	global	_SSPBUF
+    62  0013                     _SSPBUF	set	19
+    63                           	global	_SSPCON
+    64  0014                     _SSPCON	set	20
+    65                           	global	_CARRY
+    66  0018                     _CARRY	set	24
+    67                           	global	_GIE
+    68  005F                     _GIE	set	95
+    69                           	global	_RD2
+    70  0042                     _RD2	set	66
+    71                           	global	_RD3
+    72  0043                     _RD3	set	67
+    73                           	global	_SSPIF
+    74  0063                     _SSPIF	set	99
+    75                           	global	_SSPSTAT
+    76  0094                     _SSPSTAT	set	148
+    77                           	global	_TRISC
+    78  0087                     _TRISC	set	135
+    79                           	global	_TRISD
+    80  0088                     _TRISD	set	136
+    81                           	global	_EEADR
+    82  010D                     _EEADR	set	269
+    83                           	global	_EEDATA
+    84  010C                     _EEDATA	set	268
+    85                           	global	_EECON1
+    86  018C                     _EECON1	set	396
+    87                           	global	_EECON2
+    88  018D                     _EECON2	set	397
+    89                           	global	_RD
+    90  0C60                     _RD	set	3168
+    91                           	global	_WR
+    92  0C61                     _WR	set	3169
+    93                           	global	_WREN
+    94  0C62                     _WREN	set	3170
+    95                           psect	strings,class=STRING,delta=2
+    96                           global __pstrings
+    97  0003                     __pstrings:
+    98                           ;	global	stringdir,stringtab,__stringbase
+    99  0003                     stringtab:
+   100                           ;	String table - string pointers are 1 byte each
+   101  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+   102  0003  3000               movlw high(stringdir)
+   103  0004  008A               movwf pclath
+   104  0005  0804               movf fsr,w
+   105  0006  0A84               incf fsr
+   106  0007  0782               	addwf pc
+   107  0008                     __stringbase:
+   108  0008  3400               	retlw	0
+   109                           psect	strings
+   110                           	
+   111  0009                     STR_1:	
+   112  0009  344C               	retlw	76	;'L'
+   113  000A  3459               	retlw	89	;'Y'
+   114  000B  3443               	retlw	67	;'C'
+   115  000C  3441               	retlw	65	;'A'
+   116  000D  3420               	retlw	32	;' '
+   117  000E  3453               	retlw	83	;'S'
+   118  000F  344F               	retlw	79	;'O'
+   119  0010  3446               	retlw	70	;'F'
+   120  0011  3454               	retlw	84	;'T'
+   121  0012  3400               	retlw	0
+   122                           psect	strings
+   123  0009                     STR_2	equ	STR_1+0
+   124                           	file	"SPI MASTER.c.as"
+   125                           	line	#
+   126                           psect cinit,class=CODE,delta=2
+   127                           global start_initialization
+   128  0702                     start_initialization:
+   129                           
+   130                           psect cinit,class=CODE,delta=2
+   131                           global end_of_initialization
+   132                           
+   133                           ;End of C runtime variable initialization code
+   134                           
+   135  0702                     end_of_initialization:
+   136  0702  0183               clrf status
+   137  0703  120A  118A  2FCE   ljmp _main	;jump to C main() function
+   138                           psect	cstackCOMMON,class=COMMON,space=1
+   139                           global __pcstackCOMMON
+   140  0070                     __pcstackCOMMON:
+   141                           	global	?_Lcd_Command
+   142  0070                     ?_Lcd_Command:	; 0 bytes @ 0x0
+   143                           	global	??_Lcd_Command
+   144  0070                     ??_Lcd_Command:	; 0 bytes @ 0x0
+   145                           	global	?_Lcd_Data
+   146  0070                     ?_Lcd_Data:	; 0 bytes @ 0x0
+   147                           	global	??_Lcd_Data
+   148  0070                     ??_Lcd_Data:	; 0 bytes @ 0x0
+   149                           	global	?_Lcd_String
+   150  0070                     ?_Lcd_String:	; 0 bytes @ 0x0
+   151                           	global	?_Lcd_Intialization
+   152  0070                     ?_Lcd_Intialization:	; 0 bytes @ 0x0
+   153                           	global	?_SPI_Send_Data
+   154  0070                     ?_SPI_Send_Data:	; 0 bytes @ 0x0
+   155                           	global	??_SPI_Send_Data
+   156  0070                     ??_SPI_Send_Data:	; 0 bytes @ 0x0
+   157                           	global	?_SPI_String
+   158  0070                     ?_SPI_String:	; 0 bytes @ 0x0
+   159                           	global	?_main
+   160  0070                     ?_main:	; 0 bytes @ 0x0
+   161                           	global	SPI_Send_Data@x
+   162  0070                     SPI_Send_Data@x:	; 1 bytes @ 0x0
+   163  0070                     	ds	1
+   164                           	global	??_SPI_String
+   165  0071                     ??_SPI_String:	; 0 bytes @ 0x1
+   166  0071                     	ds	1
+   167                           	global	Lcd_Command@cmd
+   168  0072                     Lcd_Command@cmd:	; 1 bytes @ 0x2
+   169                           	global	Lcd_Data@Data
+   170  0072                     Lcd_Data@Data:	; 1 bytes @ 0x2
+   171  0072                     	ds	1
+   172                           	global	??_Lcd_String
+   173  0073                     ??_Lcd_String:	; 0 bytes @ 0x3
+   174                           	global	??_Lcd_Intialization
+   175  0073                     ??_Lcd_Intialization:	; 0 bytes @ 0x3
+   176                           	global	SPI_String@Str
+   177  0073                     SPI_String@Str:	; 1 bytes @ 0x3
+   178  0073                     	ds	1
+   179                           	global	Lcd_String@Str
+   180  0074                     Lcd_String@Str:	; 1 bytes @ 0x4
+   181  0074                     	ds	1
+   182                           	global	??_main
+   183  0075                     ??_main:	; 0 bytes @ 0x5
+   184 ;;Data sizes: Strings 10, constant 0, data 0, bss 0, persistent 0 stack 0
+   185 ;;Auto spaces:   Size  Autos    Used
+   186 ;; COMMON          14      5       5
+   187 ;; BANK0           80      0       0
+   188 ;; BANK1           80      0       0
+   189 ;; BANK3           96      0       0
+   190 ;; BANK2           96      0       0
+   191                           
+   192 ;;
+   193 ;; Pointer list with targets:
+   194                           
+   195 ;; SPI_String@Str	PTR const unsigned char  size(1) Largest target is 10
+   196 ;;		 -> STR_2(CODE[10]), 
+   197 ;;
+   198 ;; Lcd_String@Str	PTR const unsigned char  size(1) Largest target is 10
+   199 ;;		 -> STR_1(CODE[10]), 
+   200 ;;
+   201                           
+   202                           
+   203 ;;
+   204 ;; Critical Paths under _main in COMMON
+   205 ;;
+   206 ;;   _main->_Lcd_String
+   207 ;;   _Lcd_Intialization->_Lcd_Command
+   208 ;;   _Lcd_String->_Lcd_Data
+   209 ;;   _SPI_String->_SPI_Send_Data
+   210 ;;
+   211 ;; Critical Paths under _main in BANK0
+   212 ;;
+   213 ;;   None.
+   214 ;;
+   215 ;; Critical Paths under _main in BANK1
+   216 ;;
+   217 ;;   None.
+   218 ;;
+   219 ;; Critical Paths under _main in BANK3
+   220 ;;
+   221 ;;   None.
+   222 ;;
+   223 ;; Critical Paths under _main in BANK2
+   224 ;;
+   225 ;;   None.
+   226                           
+   227 ;;
+   228 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   229 ;;
+   230                           
+   231 ;;
+   232 ;;Call Graph Tables:
+   233 ;;
+   234 ;; ---------------------------------------------------------------------------------
+   235 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   236 ;; ---------------------------------------------------------------------------------
+   237 ;; (0) _main                                                 0     0      0     165
+   238 ;;                  _Lcd_Intialization
+   239 ;;                        _Lcd_Command
+   240 ;;                         _Lcd_String
+   241 ;;                         _SPI_String
+   242 ;; ---------------------------------------------------------------------------------
+   243 ;; (1) _Lcd_Intialization                                    0     0      0      30
+   244 ;;                        _Lcd_Command
+   245 ;; ---------------------------------------------------------------------------------
+   246 ;; (1) _Lcd_String                                           2     2      0      60
+   247 ;;                                              3 COMMON     2     2      0
+   248 ;;                           _Lcd_Data
+   249 ;; ---------------------------------------------------------------------------------
+   250 ;; (1) _SPI_String                                           3     3      0      45
+   251 ;;                                              1 COMMON     3     3      0
+   252 ;;                      _SPI_Send_Data
+   253 ;; ---------------------------------------------------------------------------------
+   254 ;; (2) _Lcd_Data                                             3     3      0      30
+   255 ;;                                              0 COMMON     3     3      0
+   256 ;; ---------------------------------------------------------------------------------
+   257 ;; (1) _Lcd_Command                                          3     3      0      30
+   258 ;;                                              0 COMMON     3     3      0
+   259 ;; ---------------------------------------------------------------------------------
+   260 ;; (2) _SPI_Send_Data                                        1     1      0      15
+   261 ;;                                              0 COMMON     1     1      0
+   262 ;; ---------------------------------------------------------------------------------
+   263 ;; Estimated maximum stack depth 2
+   264 ;; ---------------------------------------------------------------------------------
+   265                           
+   266 ;; Call Graph Graphs:
+   267                           
+   268 ;; _main (ROOT)
+   269 ;;   _Lcd_Intialization
+   270 ;;     _Lcd_Command
+   271 ;;   _Lcd_Command
+   272 ;;   _Lcd_String
+   273 ;;     _Lcd_Data
+   274 ;;   _SPI_String
+   275 ;;     _SPI_Send_Data
+   276 ;;
+   277                           
+   278 ;; Address spaces:
+   279                           
+   280 ;;Name               Size   Autos  Total    Cost      Usage
+   281 ;;BITCOMMON            E      0       0       0        0.0%
+   282 ;;EEDATA             100      0       0       0        0.0%
+   283 ;;NULL                 0      0       0       0        0.0%
+   284 ;;CODE                 0      0       0       0        0.0%
+   285 ;;COMMON               E      5       5       1       35.7%
+   286 ;;BITSFR0              0      0       0       1        0.0%
+   287 ;;SFR0                 0      0       0       1        0.0%
+   288 ;;BITSFR1              0      0       0       2        0.0%
+   289 ;;SFR1                 0      0       0       2        0.0%
+   290 ;;STACK                0      0       2       2        0.0%
+   291 ;;ABS                  0      0       0       3        0.0%
+   292 ;;BITBANK0            50      0       0       4        0.0%
+   293 ;;BITSFR3              0      0       0       4        0.0%
+   294 ;;SFR3                 0      0       0       4        0.0%
+   295 ;;BANK0               50      0       0       5        0.0%
+   296 ;;BITSFR2              0      0       0       5        0.0%
+   297 ;;SFR2                 0      0       0       5        0.0%
+   298 ;;BITBANK1            50      0       0       6        0.0%
+   299 ;;BANK1               50      0       0       7        0.0%
+   300 ;;BITBANK3            60      0       0       8        0.0%
+   301 ;;BANK3               60      0       0       9        0.0%
+   302 ;;BITBANK2            60      0       0      10        0.0%
+   303 ;;BANK2               60      0       0      11        0.0%
+   304 ;;DATA                 0      0       0      12        0.0%
+   305                           
+   306                           	global	_main
+   307                           psect	maintext,global,class=CODE,delta=2
+   308                           global __pmaintext
+   309  07CE                     __pmaintext:
+   310                           
+   311 ;; *************** function _main *****************
+   312 ;; Defined at:
+   313 ;;		line 21 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\SPI MASTER.c"
+   314 ;; Parameters:    Size  Location     Type
+   315 ;;		None
+   316 ;; Auto vars:     Size  Location     Type
+   317 ;;		None
+   318 ;; Return value:  Size  Location     Type
+   319 ;;		None               void
+   320 ;; Registers used:
+   321 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   322 ;; Tracked objects:
+   323 ;;		On entry : 17F/0
+   324 ;;		On exit  : 0/0
+   325 ;;		Unchanged: 0/0
+   326 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   327 ;;      Params:         0       0       0       0       0
+   328 ;;      Locals:         0       0       0       0       0
+   329 ;;      Temps:          0       0       0       0       0
+   330 ;;      Totals:         0       0       0       0       0
+   331 ;;Total ram usage:        0 bytes
+   332 ;; Hardware stack levels required when called:    2
+   333 ;; This function calls:
+   334 ;;		_Lcd_Intialization
+   335 ;;		_Lcd_Command
+   336 ;;		_Lcd_String
+   337 ;;		_SPI_String
+   338 ;; This function is called by:
+   339 ;;		Startup code after reset
+   340 ;; This function uses a non-reentrant model
+   341 ;;
+   342                           psect	maintext
+   343                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\SPI MA
+                                 STER.c"
+   344                           	line	21
+   345                           	global	__size_of_main
+   346  0032                     	__size_of_main	equ	__end_of_main-_main
+   347                           	
+   348  07CE                     _main:	
+   349                           	opt	stack 6
+   350                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   351                           	line	22
+   352                           	
+   353  07CE                     l2684:	
+   354                           ;SPI MASTER.c: 22: TRISD=0X00;
+   355  07CE  1683               	bsf	status, 5	;RP0=1, select bank1
+   356  07CF  1303               	bcf	status, 6	;RP1=0, select bank1
+   357  07D0  0188               	clrf	(136)^080h	;volatile
+   358                           	line	23
+   359                           ;SPI MASTER.c: 23: PORTD=0X00;
+   360  07D1  1283               	bcf	status, 5	;RP0=0, select bank0
+   361  07D2  1303               	bcf	status, 6	;RP1=0, select bank0
+   362  07D3  0188               	clrf	(8)	;volatile
+   363                           	line	24
+   364                           	
+   365  07D4                     l2686:	
+   366                           ;SPI MASTER.c: 24: TRISC=0X10;
+   367  07D4  3010               	movlw	(010h)
+   368  07D5  1683               	bsf	status, 5	;RP0=1, select bank1
+   369  07D6  1303               	bcf	status, 6	;RP1=0, select bank1
+   370  07D7  0087               	movwf	(135)^080h	;volatile
+   371                           	line	25
+   372                           	
+   373  07D8                     l2688:	
+   374                           ;SPI MASTER.c: 25: PORTC=0X00;
+   375  07D8  1283               	bcf	status, 5	;RP0=0, select bank0
+   376  07D9  1303               	bcf	status, 6	;RP1=0, select bank0
+   377  07DA  0187               	clrf	(7)	;volatile
+   378                           	line	27
+   379                           	
+   380  07DB                     l2690:	
+   381                           ;SPI MASTER.c: 27: Lcd_Intialization();
+   382  07DB  120A  118A  2712   	fcall	_Lcd_Intialization
+              120A  118A         
+   383                           	line	29
+   384                           	
+   385  07E0                     l2692:	
+   386                           ;SPI MASTER.c: 29: SSPSTAT=0X80;
+   387  07E0  3080               	movlw	(080h)
+   388  07E1  1683               	bsf	status, 5	;RP0=1, select bank1
+   389  07E2  1303               	bcf	status, 6	;RP1=0, select bank1
+   390  07E3  0094               	movwf	(148)^080h	;volatile
+   391                           	line	30
+   392                           	
+   393  07E4                     l2694:	
+   394                           ;SPI MASTER.c: 30: SSPCON=0X20;
+   395  07E4  3020               	movlw	(020h)
+   396  07E5  1283               	bcf	status, 5	;RP0=0, select bank0
+   397  07E6  1303               	bcf	status, 6	;RP1=0, select bank0
+   398  07E7  0094               	movwf	(20)	;volatile
+   399                           	line	32
+   400                           	
+   401  07E8                     l2696:	
+   402                           ;SPI MASTER.c: 32: Lcd_Command(0x80);
+   403  07E8  3080               	movlw	(080h)
+   404  07E9  120A  118A  2770   	fcall	_Lcd_Command
+              120A  118A         
+   405                           	line	33
+   406                           	
+   407  07EE                     l2698:	
+   408                           ;SPI MASTER.c: 33: Lcd_String("LYCA SOFT");
+   409  07EE  3001               	movlw	((STR_1-__stringbase))&0ffh
+   410  07EF  120A  118A  2725   	fcall	_Lcd_String
+              120A  118A         
+   411  07F4  2FF5               	goto	l2700
+   412                           	line	35
+   413                           ;SPI MASTER.c: 35: while(1)
+   414                           	
+   415  07F5                     l714:	
+   416                           	line	37
+   417                           	
+   418  07F5                     l2700:	
+   419                           ;SPI MASTER.c: 36: {
+   420                           ;SPI MASTER.c: 37: SPI_String("LYCA SOFT");
+   421  07F5  3001               	movlw	((STR_2-__stringbase))&0ffh
+   422  07F6  120A  118A  2746   	fcall	_SPI_String
+              120A  118A         
+   423  07FB  2FF5               	goto	l2700
+   424                           	line	38
+   425                           	
+   426  07FC                     l715:	
+   427                           	line	35
+   428  07FC  2FF5               	goto	l2700
+   429                           	
+   430  07FD                     l716:	
+   431                           	line	39
+   432                           	
+   433  07FD                     l717:	
+   434                           	global	start
+   435  07FD  120A  118A  2800   	ljmp	start
+   436                           	opt stack 0
+   437                           GLOBAL	__end_of_main
+   438  0800                     	__end_of_main:
+   439 ;; =============== function _main ends ============
+   440                           
+   441                           	signat	_main,88
+   442                           	global	_Lcd_Intialization
+   443                           psect	text119,local,class=CODE,delta=2
+   444                           global __ptext119
+   445  0712                     __ptext119:
+   446                           
+   447 ;; *************** function _Lcd_Intialization *****************
+   448 ;; Defined at:
+   449 ;;		line 49 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 BIT.h"
+   450 ;; Parameters:    Size  Location     Type
+   451 ;;		None
+   452 ;; Auto vars:     Size  Location     Type
+   453 ;;		None
+   454 ;; Return value:  Size  Location     Type
+   455 ;;		None               void
+   456 ;; Registers used:
+   457 ;;		wreg, status,2, status,0, pclath, cstack
+   458 ;; Tracked objects:
+   459 ;;		On entry : 0/0
+   460 ;;		On exit  : 0/0
+   461 ;;		Unchanged: 0/0
+   462 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   463 ;;      Params:         0       0       0       0       0
+   464 ;;      Locals:         0       0       0       0       0
+   465 ;;      Temps:          0       0       0       0       0
+   466 ;;      Totals:         0       0       0       0       0
+   467 ;;Total ram usage:        0 bytes
+   468 ;; Hardware stack levels used:    1
+   469 ;; Hardware stack levels required when called:    1
+   470 ;; This function calls:
+   471 ;;		_Lcd_Command
+   472 ;; This function is called by:
+   473 ;;		_main
+   474 ;; This function uses a non-reentrant model
+   475 ;;
+   476                           psect	text119
+   477                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 
+                                 BIT.h"
+   478                           	line	49
+   479                           	global	__size_of_Lcd_Intialization
+   480  0013                     	__size_of_Lcd_Intialization	equ	__end_of_Lcd_Intialization-_Lcd_Intialization
+   481                           	
+   482  0712                     _Lcd_Intialization:	
+   483                           	opt	stack 6
+   484                           ; Regs used in _Lcd_Intialization: [wreg+status,2+status,0+pclath+cstack]
+   485                           	line	50
+   486                           	
+   487  0712                     l2682:	
+   488                           ;LCD 4 BIT.h: 50: Lcd_Command(0x02);
+   489  0712  3002               	movlw	(02h)
+   490  0713  120A  118A  2770   	fcall	_Lcd_Command
+              120A  118A         
+   491                           	line	51
+   492                           ;LCD 4 BIT.h: 51: Lcd_Command(0x28);
+   493  0718  3028               	movlw	(028h)
+   494  0719  120A  118A  2770   	fcall	_Lcd_Command
+              120A  118A         
+   495                           	line	52
+   496                           ;LCD 4 BIT.h: 52: Lcd_Command(0x0c);
+   497  071E  300C               	movlw	(0Ch)
+   498  071F  120A  118A  2770   	fcall	_Lcd_Command
+              120A  118A         
+   499                           	line	53
+   500                           	
+   501  0724                     l699:	
+   502  0724  0008               	return
+   503                           	opt stack 0
+   504                           GLOBAL	__end_of_Lcd_Intialization
+   505  0725                     	__end_of_Lcd_Intialization:
+   506 ;; =============== function _Lcd_Intialization ends ============
+   507                           
+   508                           	signat	_Lcd_Intialization,88
+   509                           	global	_Lcd_String
+   510                           psect	text120,local,class=CODE,delta=2
+   511                           global __ptext120
+   512  0725                     __ptext120:
+   513                           
+   514 ;; *************** function _Lcd_String *****************
+   515 ;; Defined at:
+   516 ;;		line 41 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 BIT.h"
+   517 ;; Parameters:    Size  Location     Type
+   518 ;;  Str             1    wreg     PTR const unsigned char 
+   519 ;;		 -> STR_1(10), 
+   520 ;; Auto vars:     Size  Location     Type
+   521 ;;  Str             1    4[COMMON] PTR const unsigned char 
+   522 ;;		 -> STR_1(10), 
+   523 ;; Return value:  Size  Location     Type
+   524 ;;		None               void
+   525 ;; Registers used:
+   526 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   527 ;; Tracked objects:
+   528 ;;		On entry : 0/0
+   529 ;;		On exit  : 0/0
+   530 ;;		Unchanged: 0/0
+   531 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   532 ;;      Params:         0       0       0       0       0
+   533 ;;      Locals:         1       0       0       0       0
+   534 ;;      Temps:          1       0       0       0       0
+   535 ;;      Totals:         2       0       0       0       0
+   536 ;;Total ram usage:        2 bytes
+   537 ;; Hardware stack levels used:    1
+   538 ;; Hardware stack levels required when called:    1
+   539 ;; This function calls:
+   540 ;;		_Lcd_Data
+   541 ;; This function is called by:
+   542 ;;		_main
+   543 ;; This function uses a non-reentrant model
+   544 ;;
+   545                           psect	text120
+   546                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 
+                                 BIT.h"
+   547                           	line	41
+   548                           	global	__size_of_Lcd_String
+   549  0021                     	__size_of_Lcd_String	equ	__end_of_Lcd_String-_Lcd_String
+   550                           	
+   551  0725                     _Lcd_String:	
+   552                           	opt	stack 6
+   553                           ; Regs used in _Lcd_String: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   554                           ;Lcd_String@Str stored from wreg
+   555  0725  00F4               	movwf	(Lcd_String@Str)
+   556                           	line	42
+   557                           	
+   558  0726                     l2674:	
+   559                           ;LCD 4 BIT.h: 42: while(*Str != 0)
+   560  0726  2F38               	goto	l2680
+   561                           	
+   562  0727                     l694:	
+   563                           	line	44
+   564                           	
+   565  0727                     l2676:	
+   566                           ;LCD 4 BIT.h: 43: {
+   567                           ;LCD 4 BIT.h: 44: Lcd_Data(*Str++);
+   568  0727  0874               	movf	(Lcd_String@Str),w
+   569  0728  0084               	movwf	fsr0
+   570  0729  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   571  072E  120A  118A  279F   	fcall	_Lcd_Data
+              120A  118A         
+   572                           	
+   573  0733                     l2678:	
+   574  0733  3001               	movlw	(01h)
+   575  0734  00F3               	movwf	(??_Lcd_String+0)+0
+   576  0735  0873               	movf	(??_Lcd_String+0)+0,w
+   577  0736  07F4               	addwf	(Lcd_String@Str),f
+   578  0737  2F38               	goto	l2680
+   579                           	line	45
+   580                           	
+   581  0738                     l693:	
+   582                           	line	42
+   583                           	
+   584  0738                     l2680:	
+   585  0738  0874               	movf	(Lcd_String@Str),w
+   586  0739  0084               	movwf	fsr0
+   587  073A  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   588  073F  3800               	iorlw	0
+   589  0740  1D03               	skipz
+   590  0741  2F43               	goto	u2261
+   591  0742  2F44               	goto	u2260
+   592  0743                     u2261:
+   593  0743  2F27               	goto	l2676
+   594  0744                     u2260:
+   595  0744  2F45               	goto	l696
+   596                           	
+   597  0745                     l695:	
+   598                           	line	46
+   599                           	
+   600  0745                     l696:	
+   601  0745  0008               	return
+   602                           	opt stack 0
+   603                           GLOBAL	__end_of_Lcd_String
+   604  0746                     	__end_of_Lcd_String:
+   605 ;; =============== function _Lcd_String ends ============
+   606                           
+   607                           	signat	_Lcd_String,4216
+   608                           	global	_SPI_String
+   609                           psect	text121,local,class=CODE,delta=2
+   610                           global __ptext121
+   611  0746                     __ptext121:
+   612                           
+   613 ;; *************** function _SPI_String *****************
+   614 ;; Defined at:
+   615 ;;		line 12 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\SPI MASTER.c"
+   616 ;; Parameters:    Size  Location     Type
+   617 ;;  Str             1    wreg     PTR const unsigned char 
+   618 ;;		 -> STR_2(10), 
+   619 ;; Auto vars:     Size  Location     Type
+   620 ;;  Str             1    3[COMMON] PTR const unsigned char 
+   621 ;;		 -> STR_2(10), 
+   622 ;; Return value:  Size  Location     Type
+   623 ;;		None               void
+   624 ;; Registers used:
+   625 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   626 ;; Tracked objects:
+   627 ;;		On entry : 0/0
+   628 ;;		On exit  : 0/0
+   629 ;;		Unchanged: 0/0
+   630 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   631 ;;      Params:         0       0       0       0       0
+   632 ;;      Locals:         1       0       0       0       0
+   633 ;;      Temps:          2       0       0       0       0
+   634 ;;      Totals:         3       0       0       0       0
+   635 ;;Total ram usage:        3 bytes
+   636 ;; Hardware stack levels used:    1
+   637 ;; Hardware stack levels required when called:    1
+   638 ;; This function calls:
+   639 ;;		_SPI_Send_Data
+   640 ;; This function is called by:
+   641 ;;		_main
+   642 ;; This function uses a non-reentrant model
+   643 ;;
+   644                           psect	text121
+   645                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\SPI MA
+                                 STER.c"
+   646                           	line	12
+   647                           	global	__size_of_SPI_String
+   648  002A                     	__size_of_SPI_String	equ	__end_of_SPI_String-_SPI_String
+   649                           	
+   650  0746                     _SPI_String:	
+   651                           	opt	stack 6
+   652                           ; Regs used in _SPI_String: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   653                           ;SPI_String@Str stored from wreg
+   654  0746  00F3               	movwf	(SPI_String@Str)
+   655                           	line	13
+   656                           	
+   657  0747                     l2664:	
+   658                           ;SPI MASTER.c: 13: while(*Str != 0)
+   659  0747  2F62               	goto	l2672
+   660                           	
+   661  0748                     l709:	
+   662                           	line	15
+   663                           	
+   664  0748                     l2666:	
+   665                           ;SPI MASTER.c: 14: {
+   666                           ;SPI MASTER.c: 15: SPI_Send_Data(*Str++);
+   667  0748  0873               	movf	(SPI_String@Str),w
+   668  0749  0084               	movwf	fsr0
+   669  074A  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   670  074F  120A  118A  2706   	fcall	_SPI_Send_Data
+              120A  118A         
+   671                           	
+   672  0754                     l2668:	
+   673  0754  3001               	movlw	(01h)
+   674  0755  00F1               	movwf	(??_SPI_String+0)+0
+   675  0756  0871               	movf	(??_SPI_String+0)+0,w
+   676  0757  07F3               	addwf	(SPI_String@Str),f
+   677                           	line	16
+   678                           	
+   679  0758                     l2670:	
+   680                           ;SPI MASTER.c: 16: _delay((unsigned long)((15)*(20e6/4000.0)));
+   681                           	opt asmopt_off
+   682  0758  3062               movlw	98
+   683  0759  00F2               movwf	((??_SPI_String+0)+0+1),f
+   684  075A  3065               	movlw	101
+   685  075B  00F1               movwf	((??_SPI_String+0)+0),f
+   686  075C                     u2277:
+   687  075C  0BF1               	decfsz	((??_SPI_String+0)+0),f
+   688  075D  2F5C               	goto	u2277
+   689  075E  0BF2               	decfsz	((??_SPI_String+0)+0+1),f
+   690  075F  2F5C               	goto	u2277
+   691  0760  2F61               	nop2
+   692                           opt asmopt_on
+   693                           
+   694  0761  2F62               	goto	l2672
+   695                           	line	17
+   696                           	
+   697  0762                     l708:	
+   698                           	line	13
+   699                           	
+   700  0762                     l2672:	
+   701  0762  0873               	movf	(SPI_String@Str),w
+   702  0763  0084               	movwf	fsr0
+   703  0764  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   704  0769  3800               	iorlw	0
+   705  076A  1D03               	skipz
+   706  076B  2F6D               	goto	u2251
+   707  076C  2F6E               	goto	u2250
+   708  076D                     u2251:
+   709  076D  2F48               	goto	l2666
+   710  076E                     u2250:
+   711  076E  2F6F               	goto	l711
+   712                           	
+   713  076F                     l710:	
+   714                           	line	18
+   715                           	
+   716  076F                     l711:	
+   717  076F  0008               	return
+   718                           	opt stack 0
+   719                           GLOBAL	__end_of_SPI_String
+   720  0770                     	__end_of_SPI_String:
+   721 ;; =============== function _SPI_String ends ============
+   722                           
+   723                           	signat	_SPI_String,4216
+   724                           	global	_Lcd_Data
+   725                           psect	text122,local,class=CODE,delta=2
+   726                           global __ptext122
+   727  079F                     __ptext122:
+   728                           
+   729 ;; *************** function _Lcd_Data *****************
+   730 ;; Defined at:
+   731 ;;		line 26 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 BIT.h"
+   732 ;; Parameters:    Size  Location     Type
+   733 ;;  Data            1    wreg     const unsigned char 
+   734 ;; Auto vars:     Size  Location     Type
+   735 ;;  Data            1    2[COMMON] const unsigned char 
+   736 ;; Return value:  Size  Location     Type
+   737 ;;		None               void
+   738 ;; Registers used:
+   739 ;;		wreg, status,2, status,0
+   740 ;; Tracked objects:
+   741 ;;		On entry : 0/0
+   742 ;;		On exit  : 0/0
+   743 ;;		Unchanged: 0/0
+   744 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   745 ;;      Params:         0       0       0       0       0
+   746 ;;      Locals:         1       0       0       0       0
+   747 ;;      Temps:          2       0       0       0       0
+   748 ;;      Totals:         3       0       0       0       0
+   749 ;;Total ram usage:        3 bytes
+   750 ;; Hardware stack levels used:    1
+   751 ;; This function calls:
+   752 ;;		Nothing
+   753 ;; This function is called by:
+   754 ;;		_Lcd_String
+   755 ;; This function uses a non-reentrant model
+   756 ;;
+   757                           psect	text122
+   758                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 
+                                 BIT.h"
+   759                           	line	26
+   760                           	global	__size_of_Lcd_Data
+   761  002F                     	__size_of_Lcd_Data	equ	__end_of_Lcd_Data-_Lcd_Data
+   762                           	
+   763  079F                     _Lcd_Data:	
+   764                           	opt	stack 6
+   765                           ; Regs used in _Lcd_Data: [wreg+status,2+status,0]
+   766                           ;Lcd_Data@Data stored from wreg
+   767  079F  00F2               	movwf	(Lcd_Data@Data)
+   768                           	line	27
+   769                           	
+   770  07A0                     l2644:	
+   771                           ;LCD 4 BIT.h: 27: PORTD = (Data & 0XF0);
+   772  07A0  0872               	movf	(Lcd_Data@Data),w
+   773  07A1  39F0               	andlw	0F0h
+   774  07A2  1283               	bcf	status, 5	;RP0=0, select bank0
+   775  07A3  1303               	bcf	status, 6	;RP1=0, select bank0
+   776  07A4  0088               	movwf	(8)	;volatile
+   777                           	line	28
+   778                           	
+   779  07A5                     l2646:	
+   780                           ;LCD 4 BIT.h: 28: RD2 = 1;
+   781  07A5  1508               	bsf	(66/8),(66)&7
+   782                           	line	29
+   783                           	
+   784  07A6                     l2648:	
+   785                           ;LCD 4 BIT.h: 29: RD3 = 1;
+   786  07A6  1588               	bsf	(67/8),(67)&7
+   787                           	line	30
+   788                           	
+   789  07A7                     l2650:	
+   790                           ;LCD 4 BIT.h: 30: _delay((unsigned long)((5)*(20e6/4000.0)));
+   791                           	opt asmopt_off
+   792  07A7  3021               movlw	33
+   793  07A8  00F1               movwf	((??_Lcd_Data+0)+0+1),f
+   794  07A9  3076               	movlw	118
+   795  07AA  00F0               movwf	((??_Lcd_Data+0)+0),f
+   796  07AB                     u2287:
+   797  07AB  0BF0               	decfsz	((??_Lcd_Data+0)+0),f
+   798  07AC  2FAB               	goto	u2287
+   799  07AD  0BF1               	decfsz	((??_Lcd_Data+0)+0+1),f
+   800  07AE  2FAB               	goto	u2287
+   801  07AF  0064               	clrwdt
+   802                           opt asmopt_on
+   803                           
+   804                           	line	31
+   805                           	
+   806  07B0                     l2652:	
+   807                           ;LCD 4 BIT.h: 31: RD3 = 0;
+   808  07B0  1283               	bcf	status, 5	;RP0=0, select bank0
+   809  07B1  1303               	bcf	status, 6	;RP1=0, select bank0
+   810  07B2  1188               	bcf	(67/8),(67)&7
+   811                           	line	33
+   812                           	
+   813  07B3                     l2654:	
+   814                           ;LCD 4 BIT.h: 33: PORTD = ((Data<<4) & 0xF0);
+   815  07B3  0872               	movf	(Lcd_Data@Data),w
+   816  07B4  00F0               	movwf	(??_Lcd_Data+0)+0
+   817  07B5  3003               	movlw	(04h)-1
+   818  07B6                     u2245:
+   819  07B6  1003               	clrc
+   820  07B7  0DF0               	rlf	(??_Lcd_Data+0)+0,f
+   821  07B8  3EFF               	addlw	-1
+   822  07B9  1D03               	skipz
+   823  07BA  2FB6               	goto	u2245
+   824  07BB  1003               	clrc
+   825  07BC  0D70               	rlf	(??_Lcd_Data+0)+0,w
+   826  07BD  39F0               	andlw	0F0h
+   827  07BE  0088               	movwf	(8)	;volatile
+   828                           	line	34
+   829                           	
+   830  07BF                     l2656:	
+   831                           ;LCD 4 BIT.h: 34: RD2 = 1;
+   832  07BF  1508               	bsf	(66/8),(66)&7
+   833                           	line	35
+   834                           	
+   835  07C0                     l2658:	
+   836                           ;LCD 4 BIT.h: 35: RD3 = 1;
+   837  07C0  1588               	bsf	(67/8),(67)&7
+   838                           	line	36
+   839                           	
+   840  07C1                     l2660:	
+   841                           ;LCD 4 BIT.h: 36: _delay((unsigned long)((5)*(20e6/4000.0)));
+   842                           	opt asmopt_off
+   843  07C1  3021               movlw	33
+   844  07C2  00F1               movwf	((??_Lcd_Data+0)+0+1),f
+   845  07C3  3076               	movlw	118
+   846  07C4  00F0               movwf	((??_Lcd_Data+0)+0),f
+   847  07C5                     u2297:
+   848  07C5  0BF0               	decfsz	((??_Lcd_Data+0)+0),f
+   849  07C6  2FC5               	goto	u2297
+   850  07C7  0BF1               	decfsz	((??_Lcd_Data+0)+0+1),f
+   851  07C8  2FC5               	goto	u2297
+   852  07C9  0064               	clrwdt
+   853                           opt asmopt_on
+   854                           
+   855                           	line	37
+   856                           	
+   857  07CA                     l2662:	
+   858                           ;LCD 4 BIT.h: 37: RD3 = 0;
+   859  07CA  1283               	bcf	status, 5	;RP0=0, select bank0
+   860  07CB  1303               	bcf	status, 6	;RP1=0, select bank0
+   861  07CC  1188               	bcf	(67/8),(67)&7
+   862                           	line	38
+   863                           	
+   864  07CD                     l690:	
+   865  07CD  0008               	return
+   866                           	opt stack 0
+   867                           GLOBAL	__end_of_Lcd_Data
+   868  07CE                     	__end_of_Lcd_Data:
+   869 ;; =============== function _Lcd_Data ends ============
+   870                           
+   871                           	signat	_Lcd_Data,4216
+   872                           	global	_Lcd_Command
+   873                           psect	text123,local,class=CODE,delta=2
+   874                           global __ptext123
+   875  0770                     __ptext123:
+   876                           
+   877 ;; *************** function _Lcd_Command *****************
+   878 ;; Defined at:
+   879 ;;		line 11 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 BIT.h"
+   880 ;; Parameters:    Size  Location     Type
+   881 ;;  cmd             1    wreg     const unsigned char 
+   882 ;; Auto vars:     Size  Location     Type
+   883 ;;  cmd             1    2[COMMON] const unsigned char 
+   884 ;; Return value:  Size  Location     Type
+   885 ;;		None               void
+   886 ;; Registers used:
+   887 ;;		wreg, status,2, status,0
+   888 ;; Tracked objects:
+   889 ;;		On entry : 0/0
+   890 ;;		On exit  : 0/0
+   891 ;;		Unchanged: 0/0
+   892 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   893 ;;      Params:         0       0       0       0       0
+   894 ;;      Locals:         1       0       0       0       0
+   895 ;;      Temps:          2       0       0       0       0
+   896 ;;      Totals:         3       0       0       0       0
+   897 ;;Total ram usage:        3 bytes
+   898 ;; Hardware stack levels used:    1
+   899 ;; This function calls:
+   900 ;;		Nothing
+   901 ;; This function is called by:
+   902 ;;		_Lcd_Intialization
+   903 ;;		_main
+   904 ;; This function uses a non-reentrant model
+   905 ;;
+   906                           psect	text123
+   907                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\LCD 4 
+                                 BIT.h"
+   908                           	line	11
+   909                           	global	__size_of_Lcd_Command
+   910  002F                     	__size_of_Lcd_Command	equ	__end_of_Lcd_Command-_Lcd_Command
+   911                           	
+   912  0770                     _Lcd_Command:	
+   913                           	opt	stack 7
+   914                           ; Regs used in _Lcd_Command: [wreg+status,2+status,0]
+   915                           ;Lcd_Command@cmd stored from wreg
+   916  0770  00F2               	movwf	(Lcd_Command@cmd)
+   917                           	line	12
+   918                           	
+   919  0771                     l2624:	
+   920                           ;LCD 4 BIT.h: 12: PORTD = (cmd & 0XF0);
+   921  0771  0872               	movf	(Lcd_Command@cmd),w
+   922  0772  39F0               	andlw	0F0h
+   923  0773  1283               	bcf	status, 5	;RP0=0, select bank0
+   924  0774  1303               	bcf	status, 6	;RP1=0, select bank0
+   925  0775  0088               	movwf	(8)	;volatile
+   926                           	line	13
+   927                           	
+   928  0776                     l2626:	
+   929                           ;LCD 4 BIT.h: 13: RD2 = 0;
+   930  0776  1108               	bcf	(66/8),(66)&7
+   931                           	line	14
+   932                           	
+   933  0777                     l2628:	
+   934                           ;LCD 4 BIT.h: 14: RD3 = 1;
+   935  0777  1588               	bsf	(67/8),(67)&7
+   936                           	line	15
+   937                           	
+   938  0778                     l2630:	
+   939                           ;LCD 4 BIT.h: 15: _delay((unsigned long)((5)*(20e6/4000.0)));
+   940                           	opt asmopt_off
+   941  0778  3021               movlw	33
+   942  0779  00F1               movwf	((??_Lcd_Command+0)+0+1),f
+   943  077A  3076               	movlw	118
+   944  077B  00F0               movwf	((??_Lcd_Command+0)+0),f
+   945  077C                     u2307:
+   946  077C  0BF0               	decfsz	((??_Lcd_Command+0)+0),f
+   947  077D  2F7C               	goto	u2307
+   948  077E  0BF1               	decfsz	((??_Lcd_Command+0)+0+1),f
+   949  077F  2F7C               	goto	u2307
+   950  0780  0064               	clrwdt
+   951                           opt asmopt_on
+   952                           
+   953                           	line	16
+   954                           	
+   955  0781                     l2632:	
+   956                           ;LCD 4 BIT.h: 16: RD3 = 0;
+   957  0781  1283               	bcf	status, 5	;RP0=0, select bank0
+   958  0782  1303               	bcf	status, 6	;RP1=0, select bank0
+   959  0783  1188               	bcf	(67/8),(67)&7
+   960                           	line	18
+   961                           	
+   962  0784                     l2634:	
+   963                           ;LCD 4 BIT.h: 18: PORTD = ((cmd<<4) & 0xF0);
+   964  0784  0872               	movf	(Lcd_Command@cmd),w
+   965  0785  00F0               	movwf	(??_Lcd_Command+0)+0
+   966  0786  3003               	movlw	(04h)-1
+   967  0787                     u2235:
+   968  0787  1003               	clrc
+   969  0788  0DF0               	rlf	(??_Lcd_Command+0)+0,f
+   970  0789  3EFF               	addlw	-1
+   971  078A  1D03               	skipz
+   972  078B  2F87               	goto	u2235
+   973  078C  1003               	clrc
+   974  078D  0D70               	rlf	(??_Lcd_Command+0)+0,w
+   975  078E  39F0               	andlw	0F0h
+   976  078F  0088               	movwf	(8)	;volatile
+   977                           	line	19
+   978                           	
+   979  0790                     l2636:	
+   980                           ;LCD 4 BIT.h: 19: RD2 = 0;
+   981  0790  1108               	bcf	(66/8),(66)&7
+   982                           	line	20
+   983                           	
+   984  0791                     l2638:	
+   985                           ;LCD 4 BIT.h: 20: RD3 = 1;
+   986  0791  1588               	bsf	(67/8),(67)&7
+   987                           	line	21
+   988                           	
+   989  0792                     l2640:	
+   990                           ;LCD 4 BIT.h: 21: _delay((unsigned long)((5)*(20e6/4000.0)));
+   991                           	opt asmopt_off
+   992  0792  3021               movlw	33
+   993  0793  00F1               movwf	((??_Lcd_Command+0)+0+1),f
+   994  0794  3076               	movlw	118
+   995  0795  00F0               movwf	((??_Lcd_Command+0)+0),f
+   996  0796                     u2317:
+   997  0796  0BF0               	decfsz	((??_Lcd_Command+0)+0),f
+   998  0797  2F96               	goto	u2317
+   999  0798  0BF1               	decfsz	((??_Lcd_Command+0)+0+1),f
+  1000  0799  2F96               	goto	u2317
+  1001  079A  0064               	clrwdt
+  1002                           opt asmopt_on
+  1003                           
+  1004                           	line	22
+  1005                           	
+  1006  079B                     l2642:	
+  1007                           ;LCD 4 BIT.h: 22: RD3 = 0;
+  1008  079B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1009  079C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1010  079D  1188               	bcf	(67/8),(67)&7
+  1011                           	line	23
+  1012                           	
+  1013  079E                     l687:	
+  1014  079E  0008               	return
+  1015                           	opt stack 0
+  1016                           GLOBAL	__end_of_Lcd_Command
+  1017  079F                     	__end_of_Lcd_Command:
+  1018 ;; =============== function _Lcd_Command ends ============
+  1019                           
+  1020                           	signat	_Lcd_Command,4216
+  1021                           	global	_SPI_Send_Data
+  1022                           psect	text124,local,class=CODE,delta=2
+  1023                           global __ptext124
+  1024  0706                     __ptext124:
+  1025                           
+  1026 ;; *************** function _SPI_Send_Data *****************
+  1027 ;; Defined at:
+  1028 ;;		line 6 in file "E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\SPI MASTER.c"
+  1029 ;; Parameters:    Size  Location     Type
+  1030 ;;  x               1    wreg     unsigned char 
+  1031 ;; Auto vars:     Size  Location     Type
+  1032 ;;  x               1    0[COMMON] unsigned char 
+  1033 ;; Return value:  Size  Location     Type
+  1034 ;;		None               void
+  1035 ;; Registers used:
+  1036 ;;		wreg
+  1037 ;; Tracked objects:
+  1038 ;;		On entry : 0/0
+  1039 ;;		On exit  : 0/0
+  1040 ;;		Unchanged: 0/0
+  1041 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1042 ;;      Params:         0       0       0       0       0
+  1043 ;;      Locals:         1       0       0       0       0
+  1044 ;;      Temps:          0       0       0       0       0
+  1045 ;;      Totals:         1       0       0       0       0
+  1046 ;;Total ram usage:        1 bytes
+  1047 ;; Hardware stack levels used:    1
+  1048 ;; This function calls:
+  1049 ;;		Nothing
+  1050 ;; This function is called by:
+  1051 ;;		_SPI_String
+  1052 ;; This function uses a non-reentrant model
+  1053 ;;
+  1054                           psect	text124
+  1055                           	file	"E:\02-CODING\05-LYCASOFT CODING\02-CODING\01-PIC16F877A\31-SPI MASTER\CODE\SPI MA
+                                 STER.c"
+  1056                           	line	6
+  1057                           	global	__size_of_SPI_Send_Data
+  1058  000C                     	__size_of_SPI_Send_Data	equ	__end_of_SPI_Send_Data-_SPI_Send_Data
+  1059                           	
+  1060  0706                     _SPI_Send_Data:	
+  1061                           	opt	stack 6
+  1062                           ; Regs used in _SPI_Send_Data: [wreg]
+  1063                           ;SPI_Send_Data@x stored from wreg
+  1064  0706  00F0               	movwf	(SPI_Send_Data@x)
+  1065                           	line	7
+  1066                           	
+  1067  0707                     l1764:	
+  1068                           ;SPI MASTER.c: 7: SSPBUF = x;
+  1069  0707  0870               	movf	(SPI_Send_Data@x),w
+  1070  0708  1283               	bcf	status, 5	;RP0=0, select bank0
+  1071  0709  1303               	bcf	status, 6	;RP1=0, select bank0
+  1072  070A  0093               	movwf	(19)	;volatile
+  1073                           	line	8
+  1074                           ;SPI MASTER.c: 8: while(!SSPIF);
+  1075  070B  2F0C               	goto	l702
+  1076                           	
+  1077  070C                     l703:	
+  1078                           	
+  1079  070C                     l702:	
+  1080  070C  1D8C               	btfss	(99/8),(99)&7
+  1081  070D  2F0F               	goto	u11
+  1082  070E  2F10               	goto	u10
+  1083  070F                     u11:
+  1084  070F  2F0C               	goto	l702
+  1085  0710                     u10:
+  1086  0710  2F11               	goto	l705
+  1087                           	
+  1088  0711                     l704:	
+  1089                           	line	9
+  1090                           	
+  1091  0711                     l705:	
+  1092  0711  0008               	return
+  1093                           	opt stack 0
+  1094                           GLOBAL	__end_of_SPI_Send_Data
+  1095  0712                     	__end_of_SPI_Send_Data:
+  1096 ;; =============== function _SPI_Send_Data ends ============
+  1097                           
+  1098                           	signat	_SPI_Send_Data,4216
+  1099                           psect	text125,local,class=CODE,delta=2
+  1100                           global __ptext125
+  1101  0000                     __ptext125:
+  1102                           	global	btemp
+  1103  007E                     	btemp set 07Eh
+  1104                           
+  1105                           	DABS	1,126,2	;btemp
+  1106                           	global	wtemp0
+  1107  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Wed Dec 19 11:07:01 2018
+
+                         pc 0002                  _SPI_String 0746                          _RD 0C60  
+                        u10 0710                          u11 070F                          _WR 0C61  
+                        fsr 0004               _SPI_Send_Data 0706                         l702 070C  
+                       l710 076F                         l703 070C                         l711 076F  
+                       l704 0711                         l705 0711                         l714 07F5  
+                       l715 07FC                         l708 0762                         l716 07FD  
+                       l709 0748                         l717 07FD                         l690 07CD  
+                       l693 0738                         l694 0727                         l687 079E  
+                       l695 0745                         l696 0745                         l699 0724  
+                       _GIE 005F                         _RD2 0042                         _RD3 0043  
+                       fsr0 0004         __end_of_Lcd_Command 079F                        l2700 07F5  
+                      l2630 0778                        l2640 0792                        l2632 0781  
+                      l2624 0771                        l2642 079B                        l2634 0784  
+                      l2626 0776                        l2650 07A7                        l1764 0707  
+                      l2636 0790                        l2628 0777                        l2660 07C1  
+                      l2652 07B0                        l2644 07A0                        l2638 0791  
+                      l2662 07CA                        l2654 07B3                        l2646 07A5  
+                      l2670 0758                        l2656 07BF                        l2648 07A6  
+                      l2672 0762                        l2664 0747                        l2680 0738  
+                      l2658 07C0                        l2666 0748                        l2674 0726  
+                      l2682 0712                        l2690 07DB                        l2668 0754  
+                      l2676 0727                        l2692 07E0                        l2684 07CE  
+                      l2678 0733                        l2694 07E4                        l2686 07D4  
+                      l2696 07E8                        l2688 07D8                        l2698 07EE  
+                      STR_1 0009                        STR_2 0009                        u2250 076E  
+                      u2235 0787                        u2307 077C                        u2251 076D  
+                      u2260 0744                        u2317 0796                        u2245 07B6  
+                      u2261 0743                        u2277 075C                        u2287 07AB  
+                      u2297 07C5                        _WREN 0C62                        _main 07CE  
+                      btemp 007E                        start 0000              ?_SPI_Send_Data 0070  
+                _Lcd_String 0725                       ?_main 0070                       _EEADR 010D  
+                     _CARRY 0018                       _PORTC 0007                       _PORTD 0008  
+                     _TRISC 0087                       _TRISD 0088                       _SSPIF 0063  
+                     pclath 000A                       status 0003                       wtemp0 007E  
+          __end_of_Lcd_Data 07CE                __end_of_main 0800           _Lcd_Intialization 0712  
+               ?_SPI_String 0070          ?_Lcd_Intialization 0070                 _Lcd_Command 0770  
+                    ??_main 0075         ??_Lcd_Intialization 0073                      _EEDATA 010C  
+                    _EECON1 018C                      _EECON2 018D                      _SSPCON 0014  
+                    _SSPBUF 0013   __end_of_Lcd_Intialization 0725             ??_SPI_Send_Data 0070  
+               ?_Lcd_String 0070         __size_of_SPI_String 002A              __pcstackCOMMON 0070  
+                 ?_Lcd_Data 0070         __size_of_Lcd_String 0021  __size_of_Lcd_Intialization 0013  
+                __pmaintext 07CE                  ??_Lcd_Data 0070                     _SSPSTAT 0094  
+             SPI_String@Str 0073                ??_SPI_String 0071                ?_Lcd_Command 0070  
+      end_of_initialization 0702          __end_of_SPI_String 0770                ??_Lcd_String 0073  
+        __end_of_Lcd_String 0746       __end_of_SPI_Send_Data 0712         start_initialization 0702  
+         __size_of_Lcd_Data 002F              SPI_Send_Data@x 0070        __size_of_Lcd_Command 002F  
+             Lcd_String@Str 0074                   __ptext120 0725                   __ptext121 0746  
+                 __ptext122 079F                   __ptext123 0770                   __ptext124 0706  
+                 __ptext125 0000                   __ptext118 0000                   __ptext119 0712  
+                 __pstrings 0003                Lcd_Data@Data 0072                 __stringbase 0008  
+                  _Lcd_Data 079F               __size_of_main 0032      __size_of_SPI_Send_Data 000C  
+                 stringcode 0003               ??_Lcd_Command 0070              Lcd_Command@cmd 0072  
+                  stringdir 0003                    stringtab 0003  
